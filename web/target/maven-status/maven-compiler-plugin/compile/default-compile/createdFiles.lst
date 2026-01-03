@@ -1,4 +1,10 @@
 ua\edu\lab\web\controller\BooksController.class
+ua\edu\lab\web\controller\CommentsController.class
+ua\edu\lab\web\util\ErrorResponse.class
 ua\edu\lab\web\config\AppConfig.class
+ua\edu\lab\web\config\PersistenceConfig.class
+ua\edu\lab\web\config\WebConfig.class
 ua\edu\lab\web\controller\DemoFieldInjectionController.class
+ua\edu\lab\web\dto\CreateCommentRequest.class
 ua\edu\lab\web\GuestbookApplication.class
+ua\edu\lab\web\controller\GlobalExceptionHandler.class

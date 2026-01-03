@@ -1,0 +1,4 @@
+ua\edu\lab\persistence\database\DataSourceFactory.class
+ua\edu\lab\persistence\database\DatabaseInitializer.class
+ua\edu\lab\persistence\repository\JdbcCommentRepository.class
+ua\edu\lab\persistence\repository\JdbcCatalogRepository.class

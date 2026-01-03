@@ -1,0 +1,8 @@
+ua\edu\lab\core\domain\Book.class
+ua\edu\lab\core\exception\ValidationException.class
+ua\edu\lab\core\exception\NotFoundException.class
+ua\edu\lab\core\domain\Comment.class
+ua\edu\lab\core\port\CommentRepositoryPort.class
+ua\edu\lab\core\service\CatalogService.class
+ua\edu\lab\core\service\CommentService.class
+ua\edu\lab\core\port\CatalogRepositoryPort.class

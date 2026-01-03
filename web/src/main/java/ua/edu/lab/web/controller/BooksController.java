@@ -1,32 +1,37 @@
 package ua.edu.lab.web.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import ua.edu.lab.core.domain.Book;
+import ua.edu.lab.core.service.CatalogService;
 
-import java.time.Clock;
-import java.time.Instant;
-import java.util.Map;
+import java.util.List;
 
 @RestController
 public class BooksController {
 
-    private final Clock clock;
+    private final CatalogService catalogService;
 
-    public BooksController(Clock clock) {
-        this.clock = clock;
+    public BooksController(CatalogService catalogService) {
+        this.catalogService = catalogService;
     }
 
     @GetMapping("/books")
-    public Map<String, Object> getBooks() {
-        return Map.of(
-            "message", "Books endpoint - Constructor Injection Demo",
-            "timestamp", Instant.now(clock).toString(),
-            "injectionType", "Constructor Injection",
-            "books", java.util.List.of(
-                Map.of("id", 1, "title", "Spring in Action"),
-                Map.of("id", 2, "title", "Effective Java")
-            )
-        );
+    public List<Book> getBooks(
+            @RequestParam(name = "q", required = false) String q,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "10") int size,
+            @RequestParam(name = "sort", defaultValue = "title") String sort) {
+        // Map 'q' parameter to query for CatalogService
+        // Note: page, size, sort are accepted but not yet implemented in service layer
+        return catalogService.listBooks(q);
+    }
+
+    @GetMapping("/books/{id}")
+    public Book getBookById(@PathVariable(name = "id") long id) {
+        return catalogService.getBookById(id);
     }
 }
 
