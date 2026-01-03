@@ -1,0 +1,4 @@
+ua\edu\lab\web\controller\BooksController.class
+ua\edu\lab\web\config\AppConfig.class
+ua\edu\lab\web\controller\DemoFieldInjectionController.class
+ua\edu\lab\web\GuestbookApplication.class
