@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{page.books.title}">Books List</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+    
+    <main>
+        <h2 th:text="#{page.books.title}">Books List</h2>
+        
+        <div th:if="${books == null or books.isEmpty()}" class="empty-message">
+            <p th:text="#{books.empty}">No books found.</p>
+        </div>
+        
+        <div th:unless="${books == null or books.isEmpty()}">
+            <table>
+                <thead>
+                    <tr>
+                        <th th:text="#{book.title}">Title</th>
+                        <th th:text="#{book.author}">Author</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="book : ${books}">
+                        <td th:text="${book.title}">Title</td>
+                        <td th:text="${book.author}">Author</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="actions">
+            <a th:href="@{/books/add}" class="button" th:text="#{button.add.book}">Add Book</a>
+        </div>
+    </main>
+</body>
+</html>
+
+
+
+
+

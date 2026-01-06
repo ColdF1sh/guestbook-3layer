@@ -2,6 +2,7 @@ package ua.edu.lab.web.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ua.edu.lab.core.domain.Book;
@@ -10,6 +11,7 @@ import ua.edu.lab.core.service.CatalogService;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/books")
 public class BooksController {
 
     private final CatalogService catalogService;
@@ -18,7 +20,7 @@ public class BooksController {
         this.catalogService = catalogService;
     }
 
-    @GetMapping("/books")
+    @GetMapping
     public List<Book> getBooks(
             @RequestParam(name = "q", required = false) String q,
             @RequestParam(name = "page", defaultValue = "0") int page,
@@ -29,7 +31,7 @@ public class BooksController {
         return catalogService.listBooks(q);
     }
 
-    @GetMapping("/books/{id}")
+    @GetMapping("/{id}")
     public Book getBookById(@PathVariable(name = "id") long id) {
         return catalogService.getBookById(id);
     }

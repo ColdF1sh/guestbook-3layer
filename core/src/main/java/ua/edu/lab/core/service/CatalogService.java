@@ -45,6 +45,28 @@ public class CatalogService {
     private void validateQuery(String query) {
         // Query can be null or empty, no validation needed
     }
+
+    public Book addBook(String title, String author) {
+        validateTitle(title);
+        validateAuthor(author);
+        
+        Book book = new Book();
+        book.setTitle(title);
+        book.setAuthor(author);
+        return catalogRepository.saveBook(book);
+    }
+
+    private void validateTitle(String title) {
+        if (title == null || title.trim().isEmpty()) {
+            throw new ValidationException("Book title is required");
+        }
+    }
+
+    private void validateAuthor(String author) {
+        if (author == null || author.trim().isEmpty()) {
+            throw new ValidationException("Book author is required");
+        }
+    }
 }
 
 

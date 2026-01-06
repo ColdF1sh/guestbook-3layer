@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <header th:fragment="header">
+        <nav>
+            <h1 th:text="#{app.title}">Guestbook</h1>
+            <ul>
+                <li><a th:href="@{/books}" th:text="#{nav.books}">Books</a></li>
+                <li><a th:href="@{/books/add}" th:text="#{nav.add.book}">Add Book</a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>
+

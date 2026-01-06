@@ -1,4 +1,4 @@
-C:\Project\guestbook-3layer\persistence\src\main\java\ua\edu\lab\persistence\repository\JdbcCommentRepository.java
-C:\Project\guestbook-3layer\persistence\src\main\java\ua\edu\lab\persistence\repository\JdbcCatalogRepository.java
-C:\Project\guestbook-3layer\persistence\src\main\java\ua\edu\lab\persistence\database\DataSourceFactory.java
-C:\Project\guestbook-3layer\persistence\src\main\java\ua\edu\lab\persistence\database\DatabaseInitializer.java
+C:\Project\lab6-spring\persistence\src\main\java\ua\edu\lab\persistence\repository\JdbcCatalogRepository.java
+C:\Project\lab6-spring\persistence\src\main\java\ua\edu\lab\persistence\repository\JdbcCommentRepository.java
+C:\Project\lab6-spring\persistence\src\main\java\ua\edu\lab\persistence\database\DatabaseInitializer.java
+C:\Project\lab6-spring\persistence\src\main\java\ua\edu\lab\persistence\database\DataSourceFactory.java

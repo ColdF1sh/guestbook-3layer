@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface CatalogRepositoryPort {
     List<Book> listBooks(String query);
     Optional<Book> getBookById(long id);
+    Book saveBook(Book book);
 }
 
 

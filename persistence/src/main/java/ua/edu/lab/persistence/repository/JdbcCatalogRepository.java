@@ -79,6 +79,31 @@ public class JdbcCatalogRepository implements CatalogRepositoryPort {
 
         return Optional.empty();
     }
+
+    @Override
+    public Book saveBook(Book book) {
+        String sql = "INSERT INTO books (title, author) VALUES (?, ?)";
+        
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql, java.sql.Statement.RETURN_GENERATED_KEYS)) {
+            
+            stmt.setString(1, book.getTitle());
+            stmt.setString(2, book.getAuthor());
+            stmt.executeUpdate();
+            
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    book.setId(generatedKeys.getLong(1));
+                } else {
+                    throw new RuntimeException("Error saving book: no ID generated");
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error saving book", e);
+        }
+        
+        return book;
+    }
 }
 
 
