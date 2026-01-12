@@ -1,0 +1,14 @@
+com\example\springbootapp\web\WebApplication.class
+com\example\springbootapp\web\dto\CommentForm.class
+com\example\springbootapp\web\service\AdminInitializer.class
+com\example\springbootapp\web\service\CommentServiceImpl.class
+com\example\springbootapp\web\controller\HomeController.class
+com\example\springbootapp\web\service\MailService.class
+com\example\springbootapp\web\service\UserServiceImpl.class
+com\example\springbootapp\web\dto\BookForm.class
+com\example\springbootapp\web\controller\BookController.class
+com\example\springbootapp\web\security\CustomUserDetailsService.class
+com\example\springbootapp\web\controller\AuthController.class
+com\example\springbootapp\web\config\SecurityConfig.class
+com\example\springbootapp\web\dto\RegistrationForm.class
+com\example\springbootapp\web\service\BookServiceImpl.class

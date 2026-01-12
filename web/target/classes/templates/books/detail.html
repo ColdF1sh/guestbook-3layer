@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${book.title}">Book</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header class="site-header">
+    <h1 th:text="${book.title}">Book</h1>
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/books}">Books</a>
+        <span sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" method="post" class="inline-form">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <button type="submit">Logout</button>
+            </form>
+        </span>
+        <a th:href="@{/auth/login}" sec:authorize="!isAuthenticated()">Login</a>
+    </nav>
+</header>
+<main class="container">
+    <p><strong>Author:</strong> <span th:text="${book.author}"></span></p>
+    <p><strong>Year:</strong> <span th:text="${book.year}"></span></p>
+    <form th:action="@{/admin/books/{id}/delete(id=${book.id})}" method="post"
+          class="inline-form" sec:authorize="hasRole('ADMIN')">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <button type="submit">Delete Book</button>
+    </form>
+
+    <section>
+        <h2>Comments</h2>
+        <div th:if="${#lists.isEmpty(book.comments)}" class="muted">No comments yet.</div>
+        <ul class="comment-list" th:if="${!#lists.isEmpty(book.comments)}">
+            <li th:each="comment : ${book.comments}">
+                <div class="comment-meta">
+                    <span th:text="${comment.authorEmail}"></span>
+                    <span class="muted" th:text="${#temporals.format(comment.createdAt, 'yyyy-MM-dd HH:mm')}"></span>
+                </div>
+                <div th:text="${comment.text}"></div>
+            </li>
+        </ul>
+    </section>
+
+    <section sec:authorize="isAuthenticated()">
+        <h3>Add Comment</h3>
+        <form th:action="@{/books/{id}/comments(id=${book.id})}" th:object="${commentForm}" method="post" class="form-card">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <div class="form-row">
+                <label>Comment</label>
+                <textarea th:field="*{text}" rows="4"></textarea>
+                <div class="error" th:if="${#fields.hasErrors('text')}" th:errors="*{text}"></div>
+            </div>
+            <button type="submit">Post Comment</button>
+        </form>
+    </section>
+
+    <section sec:authorize="!isAuthenticated()">
+        <p class="muted">Sign in to add a comment.</p>
+    </section>
+</main>
+</body>
+</html>

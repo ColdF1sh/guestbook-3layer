@@ -1,0 +1,8 @@
+com\example\springbootapp\core\service\CommentService.class
+com\example\springbootapp\core\model\User.class
+com\example\springbootapp\core\service\UserService.class
+com\example\springbootapp\core\dto\RegistrationRequest.class
+com\example\springbootapp\core\model\Book.class
+com\example\springbootapp\core\service\BookService.class
+com\example\springbootapp\core\model\Role.class
+com\example\springbootapp\core\model\Comment.class

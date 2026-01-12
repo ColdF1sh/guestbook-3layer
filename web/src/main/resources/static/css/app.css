@@ -1,0 +1,96 @@
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    background: #f4f6f8;
+    color: #1c1c1c;
+}
+
+.site-header {
+    background: #1f2933;
+    color: #fff;
+    padding: 16px 24px;
+}
+
+.site-header h1 {
+    margin: 0 0 8px;
+    font-size: 24px;
+}
+
+.site-header nav a {
+    color: #cce3ff;
+    margin-right: 12px;
+    text-decoration: none;
+}
+
+.inline-form {
+    display: inline;
+}
+
+.inline-form button {
+    background: none;
+    color: #cce3ff;
+    border: none;
+    padding: 0;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 960px;
+    margin: 24px auto;
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-card {
+    display: grid;
+    gap: 16px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+button, .button {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.book-list, .comment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.muted {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.error {
+    color: #b91c1c;
+    font-size: 14px;
+}
+
+.info {
+    color: #1d4ed8;
+    margin-bottom: 12px;
+}
+
+.comment-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+}

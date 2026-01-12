@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header class="site-header">
+    <h1>Books</h1>
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/auth/login}" sec:authorize="!isAuthenticated()">Login</a>
+        <a th:href="@{/auth/register}" sec:authorize="!isAuthenticated()">Register</a>
+        <span sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" method="post" class="inline-form">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <button type="submit">Logout</button>
+            </form>
+        </span>
+    </nav>
+</header>
+<main class="container">
+    <div class="actions" sec:authorize="hasRole('ADMIN')">
+        <a class="button" th:href="@{/admin/books/new}">Add Book</a>
+    </div>
+    <ul class="book-list">
+        <li th:each="book : ${books}">
+            <a th:href="@{/books/{id}(id=${book.id})}" th:text="${book.title}"></a>
+            <span class="muted">by <span th:text="${book.author}"></span> (<span th:text="${book.year}"></span>)</span>
+            <form th:action="@{/admin/books/{id}/delete(id=${book.id})}" method="post"
+                  class="inline-form" sec:authorize="hasRole('ADMIN')">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    </ul>
+</main>
+</body>
+</html>

@@ -1,0 +1,3 @@
+com\example\springbootapp\persistence\repo\UserRepository.class
+com\example\springbootapp\persistence\repo\BookRepository.class
+com\example\springbootapp\persistence\repo\CommentRepository.class
